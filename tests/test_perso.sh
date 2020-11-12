@@ -5,6 +5,16 @@ if (( $# != 2 )) ; then
 	exit 1 
 fi
 
+if (( $1 <= 0)); then
+	echo "Please choose a stack_size greater than 0"
+	exit 1
+fi
+
+if (( $2 <= 0 )); then
+	echo "Please choose a number of tests greater than 0"
+	exit 1
+fi
+
 let "total = 0"
 for (( i=0 ; i<$2 ; i++ )) ;
 do
