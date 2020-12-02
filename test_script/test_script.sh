@@ -16,7 +16,7 @@ if (( $2 <= 0 )); then
 fi
 
 let "total = 0"
-for (( i=0 ; i<$2 ; i++ )) ;
+for (( i=1 ; i<=$2 ; i++ )) ;
 do
 	ARG=`ruby -e "puts (-9999..9999).to_a.sort{ rand() - 0.5 }[0..($1 - 1)].join(' ') "`
 	PS_RESULT="`./push_swap $ARG`"
@@ -28,7 +28,8 @@ do
 	else
 		CHECKER_RESULT="⨯"
 	fi
-    echo "${RESULT}		${CHECKER_RESULT}"
+	printf "%d : %5d " $i ${RESULT}
+    echo "${CHECKER_RESULT}"
 done
 
 let "average = total / $2"
